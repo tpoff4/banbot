@@ -61,12 +61,6 @@ async def on_message(message):
         if b in msg:
             await message.channel.send(f'{message.author.mention} CАМ ИДИ HАXУЙ!! ')
 
-
-@client.event
-async def on_member_join(member):
-    role = discord.utils.get(member.server.roles, name = 'тестировщики')
-    await client.add_roles(member, role)
-
 #Commands
 
 @client.command()
@@ -119,26 +113,6 @@ async def clear(ctx, amount: int):
 async def clear_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send(f'{ctx.author.mention}, введи сколько удалить сообщений. ')
-
-
-@client.command()
-async def links(ctx):
-    emb = discord.Embed(title = 'Ссылки')
-    emb.add_field(name = 'VK:', value = 'https://vk.com/sh1r0ne.squad')
-    emb.add_field(name = 'Twitch', value = 'https://www.twitch.tv/sh1r0ne')
-    emb.add_field(name = 'Youtube', value = 'https://www.youtube.com/channel/UCx3eQPR-zzV0OaT6-bg_cTQ')
-    await ctx.send(embed = emb)
-
-@client.command()
-async def clear(ctx, amount: int):
-    await ctx.channel.purge( limit = amount )
-    await ctx.send(embed = discord.Embed(description = f':white_check_mark: Удалено {amount} сообщений..'))
-            
-@clear.error
-async def clear_error(ctx, error):
-	if isinstance(error, commands.MissingRequiredArgument):
-		await ctx.send(f'{ctx.author.mention}, введи сколько удалить сообщений. ')
-
 
 @client.command()
 async def analmetr(ctx):
