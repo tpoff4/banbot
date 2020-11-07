@@ -113,6 +113,8 @@ async def clear(ctx, amount: int):
 async def clear_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send(f'{ctx.author.mention}, введи сколько удалить сообщений. ')
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.send(f'{ctx.author.mention}, Не достаточно прав.')
 
 @client.command()
 async def analmetr(ctx):
