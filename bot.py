@@ -92,7 +92,7 @@ async def adhelp(ctx):
 @adhelp.error
 async def adhelp_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send(f'{ctx.author.mention}, Не достаточно прав.')
+        await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
 	
 @client.command()
 async def links(ctx):
@@ -114,7 +114,7 @@ async def clear_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send(f'{ctx.author.mention}, введи сколько удалить сообщений. ')
     elif isinstance(error, commands.MissingPermissions):
-        await ctx.send(f'{ctx.author.mention}, Не достаточно прав.')
+        await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
 
 @client.command()
 async def analmetr(ctx):
@@ -189,6 +189,11 @@ async def mute(ctx, member: discord.Member):
     await member.remove_roles(members_role) 
     await ctx.send(f'У {member.mention} мут за запретное слово!!')
 
+@adhelp.error
+async def mute_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
+
 @client.command()
 @commands.has_permissions(administrator = True) 
 async def unmute(ctx, member: discord.Member): 
@@ -198,6 +203,11 @@ async def unmute(ctx, member: discord.Member):
     await member.add_roles(members_role) 
     await member.remove_roles(mute_role) 
     await ctx.send(f'{member.mention} был размучен!')
+
+@adhelp.error
+async def unmute_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
 
 
 token = os.environ.get('BOT_TOKEN')
