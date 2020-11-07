@@ -189,7 +189,7 @@ async def mute(ctx, member: discord.Member):
     await member.remove_roles(members_role) 
     await ctx.send(f'У {member.mention} мут за запретное слово!!')
 
-@adhelp.error
+@mute.error
 async def mute_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
@@ -204,7 +204,7 @@ async def unmute(ctx, member: discord.Member):
     await member.remove_roles(mute_role) 
     await ctx.send(f'{member.mention} был размучен!')
 
-@adhelp.error
+@unmute.error
 async def unmute_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
