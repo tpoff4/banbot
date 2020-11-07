@@ -183,8 +183,8 @@ async def usabaeva(ctx):
 @commands.has_permissions(administrator = True) 
 async def mute(ctx, member: discord.Member): 
     await ctx.channel.purge(limit= 1) 
-    members_role = discord.utils.get(ctx.message.guild.roles, name= 'тестировщики') 
-    mute_role = discord.utils.get(ctx.message.guild.roles, name = 'muted') 
+    members_role = discord.utils.get(ctx.message.guild.roles, name= 'Участники') 
+    mute_role = discord.utils.get(ctx.message.guild.roles, name = 'Muted') 
     await member.add_roles(mute_role) 
     await member.remove_roles(members_role) 
     await ctx.send(f'У {member.mention} мут за запретное слово!!')
@@ -198,8 +198,8 @@ async def mute_error(ctx, error):
 @commands.has_permissions(administrator = True) 
 async def unmute(ctx, member: discord.Member): 
     await ctx.channel.purge(limit= 1) 
-    members_role = discord.utils.get(ctx.message.guild.roles, name= 'тестировщики') 
-    mute_role = discord.utils.get(ctx.message.guild.roles, name = 'muted') 
+    members_role = discord.utils.get(ctx.message.guild.roles, name= 'Участники') 
+    mute_role = discord.utils.get(ctx.message.guild.roles, name = 'Muted') 
     await member.add_roles(members_role) 
     await member.remove_roles(mute_role) 
     await ctx.send(f'{member.mention} был размучен!')
