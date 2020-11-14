@@ -25,12 +25,6 @@ bad_words = ['негр', 'Негр', 'нЕгр', 'неГр', 'негР','НЕг�
 
 hello_word = ['Привет', 'привет', 'ПРИВЕТ', 'Ку', 'КУ', 'ky', 'KY', 'Ky', 'здарова', 'Здарова']
 
-osk_words = ['чмо', 'долбаеб', 'гандон', 'уебан', 'уеба', 'уебок', 'уебище', 'тварь', 'тупой',
-	 	'ебанат', 'еблан', 'ебанашка', 'дурак', 'сынок', 'долбоеб', 'гондон',]
-
-fuck_you = ['иди нахуй', 'пошел нахуй', 'нахуй иди', 'нахуй пошел','иди ты нахуй', 'пошел ты нахуй',
-             'нахуй ты иди', 'нахуй ты пошел']
-
 # Events
 
 @client.event
@@ -49,17 +43,7 @@ async def on_message(message):
             await message.delete()
             await message.author.send(f'{message.author.name}, не говори так!!!')
     if msg in hello_word:
-        await message.channel.send(f'Привет, {message.author.mention}.')
-    for a in osk_words:
-    	if a in msg:
-    	    yesornot = random.randint(1, 2)
-    	    if yesornot == 1:
-    	    	await message.channel.send(f'{message.author.mention} eбать, тут сыглы')
-    	    elif yesornot == 2:
-    	    	await message.channel.send(f'{message.author.mention} осуждаю ебать')
-    for b in fuck_you:
-        if b in msg:
-            await message.channel.send(f'{message.author.mention} CАМ ИДИ HАXУЙ!! ')
+        await message.channel.send(f'Привет, {message.author.mention} чтобы увидеть команды пропиши /help.')
 
 #Commands
 
@@ -74,10 +58,6 @@ async def help(ctx):
 async def mehelp(ctx):
     emb = discord.Embed(title = 'Commands:')
     emb.add_field(name = '{}links'.format(prefix), value = 'Ссылки')
-    emb.add_field(name = '{}bibametr'.format(prefix), value = 'Размер твоей бибы')
-    emb.add_field(name = '{}analmetr'.format(prefix), value = 'Размер твоего анала')
-    emb.add_field(name = '{}chromometr'.format(prefix), value = 'Количество твоих хромосом ')
-    emb.add_field(name = '{}kormlenie'.format(prefix), value = 'Сколько девах ты накормил сегодня')
     await ctx.send(embed = emb)
 
 @client.command()
@@ -97,7 +77,8 @@ async def adhelp_error(ctx, error):
 @client.command()
 async def links(ctx):
     emb = discord.Embed(title = 'Ссылки')
-    emb.add_field(name = 'VK:', value = 'https://vk.com/sh1r0ne.squad')
+    emb.add_field(name = 'VK SH1RONE:', value = 'https://vk.com/sh1r0ne.squad')
+    emb.add_field(name = 'VK BlackBird', value = 'https://vk.com/blackbirdservers')	
     emb.add_field(name = 'Twitch', value = 'https://www.twitch.tv/sh1r0ne')
     emb.add_field(name = 'Youtube', value = 'https://www.youtube.com/channel/UCx3eQPR-zzV0OaT6-bg_cTQ')
     await ctx.send(embed = emb)
@@ -107,7 +88,6 @@ async def links(ctx):
 @commands.has_permissions(administrator = True)
 async def clear(ctx, amount: int):
     await ctx.channel.purge( limit = amount )
-    await ctx.send(embed = discord.Embed(description = f':white_check_mark: Удалено {amount} сообщений..'))
             
 @clear.error
 async def clear_error(ctx, error):
@@ -117,67 +97,13 @@ async def clear_error(ctx, error):
         await ctx.send(embed = discord.Embed(description = f':no_entry: Для тебя эта команда запрещенна!'))
 
 @client.command()
-async def analmetr(ctx):
-    author = ctx.message.author
-    anal = random.randint(1, 30)
-    if anal < 3:
-        await ctx.send(f'Ну видно что {author.mention} не гей, его дыра всего {anal} см!!')
-    if anal < 15 and anal > 3:
-        await ctx.send(f'{author.mention} по-любому шпехался в пердачелло,его дыра {anal} см!!')
-    if anal == 30:
-        await ctx.send(f'У {author.mention} ДЫРА {anal} СМ, НИХУЯСЕ ТЕБЕ В ПЕРДАЧЕЛО ШЕЙКЕР БОРОЗДУ ПУСТИЛ ИЛИ ЧТО?! Я ТАКУЮ ДЫРУ ВИДЕЛ ТОЛЬКО У ФАНАТОВ ВАРФЕЙСА!!')
-
-@client.command()
 async def bibametr(ctx):
     author = ctx.message.author
     biba = random.randint(1, 30)
     if biba < 15:
         await ctx.send(f'Ну бывает! У {author.mention} биба {biba} см!! ')
-
-    elif biba == 30:
-    	await ctx.send(f'ЕБАТЬ У {author.mention} БИБА {biba} СМ!!!')
-    else:
+    elif biba > 15:
         await ctx.send(f'Вот это я понимаю! У {author.mention} биба {biba} см!! ')
-
-@client.command()
-async def chromometr (ctx):
-    author = ctx.message.author
-    chromo = random.randint(1, 1262)
-    await ctx.send(f'У {author.mention} {chromo} хромосом!!!')
-
-@client.command()
-async def kormlenie (ctx):
-    author = ctx.message.author
-    nakormil = random.randint(1, 100)
-    await ctx.send(f'{author.mention} накормил {nakormil} девочек!!')
-
-@client.command()
-async def iqmetr(ctx):
-    author = ctx.message.author
-    iq = random.randint(0, 130)
-    if iq == 0:
-        await ctx.send(f'ЕБАТЬ {author.mention} ТУПОЙ! У НЕГО {iq}, ТУПЕЕ ТОЛЬКО КОДЕР ЭТОГО БОТА!!')
-    elif iq > 1 and iq < 10: 
-        await ctx.send(f'{author.mention}, ЕБАТЬ ТЫ УМЕЕШЬ ДЫШАТЬ? ЕГО IQ ВСЕГО {iq}!') 
-    elif iq > 11 and iq < 30:
-        await ctx.send(f'{author.mention} УМЕЕТ ХОДИТЬ!!! ЕГО IQ {iq}!')
-    elif iq > 31 and iq < 59:
-        await ctx.send(f'{author.mention} ЕБАНЫЙ УМНИК! ЕГО IQ {iq}! ТУПЕЕ ТОЛЬКО ПИНДОС!')
-    elif iq > 60 and iq < 68:
-        await ctx.send(f'АХУЕТЬ {author.mention} УМНЕЕ ПОЛОВИНЫ ЭТОГО СЕРВЕРА! ЕГО IQ {iq}')
-    elif iq == 69:
-        await ctx.send(f'{author.mention} ЕБАНЫЙ ШАЛУН! ЕГО IQ {iq}')
-    elif iq > 69 and iq < 90 :
-        await ctx.send(f'{author.mention} ПИЗДЕЦ ТЫ УМНИК ЕБАНЫЙ! ТВОЙ IQ {iq}')
-    elif iq > 91 and iq < 120:
-        await ctx.send(f'ПИЗДЕЕЕЕЕЕЦ, У {author.mention} IQ {iq}!!! КАК У ТЕБЯ БАШКА ЕЩЕ НЕ ЛОПНУЛА?')
-    elif iq > 120:
-        await ctx.send(f'{author.mention} ТЫ ЧЕ ЗАБЫЛ НА ЭТОМ ПАСТБИЩЕ ДОЛБОЕБОВ? ДА ТЫ ЕБАНЫЙ ГЕНИЙ ИДИ В ЦИКАДУ3301!! ТВОЙ IQ {iq}')
-	
-@client.command()
-async def usabaeva(ctx):
-    propusk = random.randint(50, 180)
-    await ctx.send(f'Усабучка проебет еще {propusk} пар')
 
 @client.command()
 @commands.has_permissions(administrator = True) 
