@@ -58,6 +58,7 @@ async def help(ctx):
 async def mehelp(ctx):
     emb = discord.Embed(title = 'Commands:')
     emb.add_field(name = '{}links'.format(prefix), value = 'Ссылки')
+    emb.add_field(name = '{}servers'.format(prefix), value = 'Наши сервера')
     await ctx.send(embed = emb)
 
 @client.command()
@@ -81,6 +82,15 @@ async def links(ctx):
     emb.add_field(name = 'VK BlackBird', value = 'https://vk.com/blackbirdservers')	
     emb.add_field(name = 'Twitch', value = 'https://www.twitch.tv/sh1r0ne')
     emb.add_field(name = 'Youtube', value = 'https://www.youtube.com/channel/UCx3eQPR-zzV0OaT6-bg_cTQ')
+    await ctx.send(embed = emb)
+	
+@client.command()
+async def servers(ctx):
+    emb = discord.Embed(title = 'Our servers')
+    emb.add_field(name = 'Our site', value = 'В разработке.')
+    emb.add_field(name = 'Minecraft', value = 'За IP в лс к SH1RONE.')
+    emb.add_field(name = 'CS:GO', value = 'В разработке.')	
+    emb.add_field(name = 'CS BHOP', value = 'В разработке.')
     await ctx.send(embed = emb)
 
 
