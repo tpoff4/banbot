@@ -78,6 +78,7 @@ async def adhelp_error(ctx, error):
 @client.command()
 async def links(ctx):
     emb = discord.Embed(title = 'Ссылки')
+    emb.add_field(name = 'Our site', value = 'В разработке.')
     emb.add_field(name = 'VK SH1RONE:', value = 'https://vk.com/sh1r0ne.squad')
     emb.add_field(name = 'VK BlackBird', value = 'https://vk.com/blackbirdservers')	
     emb.add_field(name = 'Twitch', value = 'https://www.twitch.tv/sh1r0ne')
@@ -87,7 +88,6 @@ async def links(ctx):
 @client.command()
 async def servers(ctx):
     emb = discord.Embed(title = 'Our servers')
-    emb.add_field(name = 'Our site', value = 'В разработке.')
     emb.add_field(name = 'Minecraft', value = 'За IP в лс к SH1RONE.')
     emb.add_field(name = 'CS:GO', value = 'В разработке.')	
     emb.add_field(name = 'CS BHOP', value = 'В разработке.')
